@@ -20,6 +20,21 @@ def hashfunction(userInput):
         output=hash_object.hexdigest()
     )
 
+#@app.route('/factorial/<string:userInput')
+#def factorialfunction(userInput):
+#    if userInput==1 : 
+#                  return userInput
+#     else : 
+#           
+#           ethelse = userInput(userInput-1)
+#           return ethelse
+#    )
+
+
+
+
+
+
 # This check will only run the code if you run it from the terminal, not if you import it
 if __name__ == '__main__':
     # Set the debug = true
