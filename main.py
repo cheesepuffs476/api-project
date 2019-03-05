@@ -1,5 +1,6 @@
 # Import flask
-from flask import Flask
+from flask import Flask, jsonify
+import hashlib
 
 # Setup your app
 app = Flask(__name__)
@@ -11,6 +12,13 @@ def index():
     return 'it works'
 
 # More routes go here...
+@app.route('/md5/<string:userInput>')
+def hashfunction(userInput):
+    hash_object = hashlib.md5(userInput.encode())
+    return jsonify(
+        input=userInput,
+        output=hash_object.hexdigest()
+    )
 
 # This check will only run the code if you run it from the terminal, not if you import it
 if __name__ == '__main__':
