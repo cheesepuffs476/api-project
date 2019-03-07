@@ -29,7 +29,13 @@ def hashfunction(userInput):
 #           ethelse = userInput(userInput-1)
 #           return ethelse
 #    )
-
+@app.route('/fibonacci/<int:userInput>')
+def hashfunction(userInput):
+    hash_object = hashlib.md5(userInput.encode())
+    return jsonify(
+        input=userInput,
+        output=hash_object.hexdigest()
+    )
 
 
 
