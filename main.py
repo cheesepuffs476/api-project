@@ -1,8 +1,12 @@
 # Import flask
 from flask import Flask, jsonify
 import hashlib
+import requests
+import json
+from flask import Flask, request
 
 # Setup your app
+slack_token = ''
 app = Flask(__name__)
 
 # Set up a route
@@ -20,12 +24,19 @@ def hashfunction(userInput):
         output=hash_object.hexdigest()
     )
 
+#Slack Alert
+@app.route('/slack-alert/<string:message>')
+def send_to_slack(message):
+    payload = {'text': message}
+    requests.post(slack_token, json.dumps(payload))
+    return 'True'
+
 #@app.route('/factorial/<string:userInput')
 #def factorialfunction(userInput):
-#    if userInput==1 : 
+#    if userInput==1 :
 #                  return userInput
-#     else : 
-#           
+#     else :
+#
 #           ethelse = userInput(userInput-1)
 #           return ethelse
 #    )
