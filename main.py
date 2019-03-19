@@ -48,7 +48,23 @@ def hashfunction(userInput):
         output=hash_object.hexdigest()
     )
 
-
+@app.route('/is-prime/<int:userInput>')
+def is_prime(userInput):
+    try:
+        userInput += 1
+    except TypeError:
+        return jsonify(
+            input = userInput,
+            error = "invalid input, input must be an int"
+        )
+    if userInput >= 2:
+        for x in range(2,userInput):
+            #if divisible, return false
+            if not(userInput % x):
+                return False
+    else:
+        return False
+    return True
 
 
 
