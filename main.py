@@ -6,7 +6,7 @@ import json
 from flask import Flask, request
 
 # Setup your app
-slack_token = ''
+slack_token = 'https://hooks.slack.com/services/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'
 app = Flask(__name__)
 
 # Set up a route
