@@ -4,6 +4,7 @@ import hashlib
 import requests
 import json
 from flask import Flask, request
+import math
 
 # Setup your app
 slack_token = 'https://hooks.slack.com/services/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'
@@ -36,8 +37,11 @@ def send_to_slack(message):
 
 @app.route('/factorial/<string:userInput>')
 def factorialfunction(userInput):
-    if userInput==1 :
-        return userInput
+    userInput=int(userInput)
+    if userInput<0:
+        return jsonify(
+            input=userInput,
+            output="You did not enter a positive integer")
     else :
       return jsonify(
       input=userInput,
@@ -51,7 +55,7 @@ def fibonaccifunction(userInput):
    if (userInput < 0):
        return jsonify(
             input=userInput,
-            output="wrong input"
+            output="Error: Input is negative"
        )
    while(a<userInput):
        a=a+results[-2]
