@@ -10,12 +10,6 @@ import math
 slack_token = 'https://hooks.slack.com/services/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'
 app = Flask(__name__)
 
-# Set up a route
-@app.route('/')
-def index():
-    # Do cool shit here
-    return 'it works'
-
 # More routes go here...
 @app.route('/md5/<string:userInput>')
 def hashfunction(userInput):
@@ -35,19 +29,21 @@ def send_to_slack(message):
         output=True
     )
 
+#App route for Factorial
 @app.route('/factorial/<string:userInput>')
 def factorialfunction(userInput):
     userInput=int(userInput)
     if userInput<0:
         return jsonify(
             input=userInput,
-            output="You did not enter a positive integer")
+            output="Error: You did not enter a positive integer")
     else :
       return jsonify(
       input=userInput,
       output=math.factorial(userInput)
     )
 
+#Fibonacci Sequence
 @app.route('/fibonacci/<int:userInput>')
 def fibonaccifunction(userInput):
    results=[1,1]
@@ -66,18 +62,25 @@ def fibonaccifunction(userInput):
        output=results
    )
 
+#App route for Prime number
 @app.route('/is-prime/<int:userInput>')
 def primefunction(userInput):
     prime = True
     i=2
-    while(i<userInput):
-        if(userInput%i==0):
-            prime=False
-        i+=1
-    return jsonify(
-        input=userInput,
-        output=prime
-    )
+    if (userInput>0)
+        while(i<userInput):
+            if(userInput%i==0):
+                prime=False
+            i+=1
+        return jsonify(
+            input=userInput,
+            output=prime
+        )
+    else: 
+        return jsonify(
+            input=userInput,
+            output=false
+        )
 
 # This check will only run the code if you run it from the terminal, not if you import it
 if __name__ == '__main__':
