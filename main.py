@@ -61,21 +61,29 @@ def fibonaccifunction(userInput):
 
 @app.route('/is-prime/<int:userInput>')
 def is_prime(userInput):
-    try:
-        userInput += 1
-    except TypeError:
-        return jsonify(
-            input = userInput,
-            error = "invalid input, input must be an int"
-        )
-    if userInput >= 2:
-        for x in range(2,userInput):
-            #if divisible, return false
-            if not(userInput % x):
-                return False
-    else:
-        return False
-    return True
+    if isinstance(userInput,int):
+        prime = True
+        if userInput < 2:
+            prime = False
+            return jsonify(
+                input= userInput,
+                output= 'Input is not prime'
+            )
+        else:
+            for n in range(2, userInput):
+                if userInput % n == 0:
+                    prime = False
+                    break
+                else:
+                    prime = True
+                    return jsonify(
+                        input= userInput,
+                        output= 'Input is prime'
+                    )
+    return jsonify(
+        input= userInput,
+        output= 'Input must be integer'
+    )
 
 
 
