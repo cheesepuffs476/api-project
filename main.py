@@ -29,7 +29,10 @@ def hashfunction(userInput):
 def send_to_slack(message):
     payload = {'text': message}
     requests.post(slack_token, json.dumps(payload))
-    return 'True'
+    return jsonify(
+        input=message,
+        output=True
+    )
 
 #@app.route('/factorial/<string:userInput')
 #def factorialfunction(userInput):
@@ -44,11 +47,11 @@ def send_to_slack(message):
 def fibonaccifunction(userInput):
    results=[1,1]
    a=1
-   if (userInput < 0)
-        return jsonify(
-       input=userInput,
-       output="wrong input"
-   )
+   if (userInput < 0):
+       return jsonify(
+            input=userInput,
+            output="wrong input"
+       )
    while(a<userInput):
        a=a+results[-2]
        if (a<userInput):
