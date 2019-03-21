@@ -29,7 +29,10 @@ def hashfunction(userInput):
 def send_to_slack(message):
     payload = {'text': message}
     requests.post(slack_token, json.dumps(payload))
-    return 'True'
+    return jsonify(
+        input=message,
+        output=True
+    )
 
 #@app.route('/factorial/<string:userInput')
 #def factorialfunction(userInput):
