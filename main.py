@@ -69,29 +69,24 @@ def fibonaccifunction(userInput):
 
 @app.route('/is-prime/<int:userInput>')
 def is_prime(userInput):
-    if isinstance(userInput,int):
-        prime = True
-        if userInput < 2:
-            prime = False
-            return jsonify(
-                input= userInput,
-                output= False
-            )
-        else:
-            for n in range(2, userInput):
-                if userInput % n == 0:
-                    prime = False
-                    break
-                else:
-                    prime = True
-                    return jsonify(
-                        input= userInput,
-                        output= True
-                    )
-    return jsonify(
-        input= userInput,
-        output= 'Input must be integer'
-    )
+    prime = True
+    if userInput < 2:
+        prime = False
+        return jsonify(
+            input= userInput,
+            output= False
+        )
+    else:
+        for n in range(2, userInput):
+            if userInput % n == 0:
+                prime = False
+                break
+            else:
+                prime = True
+                return jsonify(
+                    input= userInput,
+                    output= True
+                )
 
 
 
