@@ -39,8 +39,10 @@ def factorialfunction(userInput):
     if userInput==1 :
         return userInput
     else :
-     ethelse = print (math.factorial(userInput)) 
-    return ethelse
+      return jsonify(
+      input=userInput,
+      output=math.factorial(userInput)
+    )
 
 @app.route('/fibonacci/<int:userInput>')
 def fibonaccifunction(userInput):
