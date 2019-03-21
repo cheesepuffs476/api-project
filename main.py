@@ -80,7 +80,7 @@ def is_prime(userInput):
         for n in range(2, userInput):
             if userInput % n == 0:
                 prime = False
-                break
+                continue
             else:
                 prime = True
                 return jsonify(
