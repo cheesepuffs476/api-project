@@ -64,14 +64,6 @@ else:
        n2 = nth
        count += 1
 
-
-def hashfunction(userInput):
-    hash_object = hashlib.md5(userInput.encode())
-    return jsonify(
-        input=userInput,
-        output=hash_object.hexdigest()
-    )
-
 @app.route('/is-prime/<int:userInput>')
 def is_prime(userInput):
     try:
