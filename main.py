@@ -34,15 +34,14 @@ def send_to_slack(message):
         output=True
     )
 
-#@app.route('/factorial/<string:userInput')
-#def factorialfunction(userInput):
-#    if userInput==1 :
-#                  return userInput
-#     else :
-#
-#           ethelse = userInput(userInput-1)
-#           return ethelse
-#    )
+@app.route('/factorial/<string:userInput>')
+def factorialfunction(userInput):
+    if userInput==1 :
+        return userInput
+    else :
+     ethelse = print (math.factorial(userInput)) 
+    return ethelse
+
 @app.route('/fibonacci/<int:userInput>')
 def fibonaccifunction(userInput):
    results=[1,1]
