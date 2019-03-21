@@ -75,7 +75,7 @@ def is_prime(userInput):
             prime = False
             return jsonify(
                 input= userInput,
-                output= 'Input is not prime'
+                output= False
             )
         else:
             for n in range(2, userInput):
@@ -86,7 +86,7 @@ def is_prime(userInput):
                     prime = True
                     return jsonify(
                         input= userInput,
-                        output= 'Input is prime'
+                        output= True
                     )
     return jsonify(
         input= userInput,
