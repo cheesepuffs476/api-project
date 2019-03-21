@@ -67,7 +67,7 @@ def fibonaccifunction(userInput):
 def primefunction(userInput):
     prime = True
     i=2
-    if (userInput>0)
+    if (userInput>0):
         while(i<userInput):
             if(userInput%i==0):
                 prime=False
@@ -76,7 +76,7 @@ def primefunction(userInput):
             input=userInput,
             output=prime
         )
-    else: 
+    else:
         return jsonify(
             input=userInput,
             output=false
