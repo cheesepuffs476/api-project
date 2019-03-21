@@ -67,6 +67,7 @@ def fibonaccifunction(userInput):
    )
 
 @app.route('/is-prime/<int:userInput>')
+<<<<<<< HEAD
 def primefunction(userInput):
     prime = True
     i=2
@@ -78,6 +79,27 @@ def primefunction(userInput):
         input=userInput,
         output=prime
     )
+=======
+def is_prime(userInput):
+    prime = True
+    if userInput < 2:
+        prime = False
+        return jsonify(
+            input= userInput,
+            output= False
+        )
+    else:
+        for n in range(2, userInput):
+            if userInput % n == 0:
+                prime = False
+                continue
+            else:
+                prime = True
+                return jsonify(
+                    input= userInput,
+                    output= True
+                )
+>>>>>>> ae184630006c2a516e2daade7e7c76cd9e574e1b
 
 
 # This check will only run the code if you run it from the terminal, not if you import it
