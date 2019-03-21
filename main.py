@@ -41,7 +41,7 @@ def factorialfunction(userInput):
     else :
       return jsonify(
       input=userInput,
-      output=print (math.factorial(userInput))
+      output=math.factorial(userInput)
     )
 
 @app.route('/fibonacci/<int:userInput>')
