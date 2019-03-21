@@ -47,11 +47,11 @@ def send_to_slack(message):
 def fibonaccifunction(userInput):
    results=[1,1]
    a=1
-   if (userInput < 0)
-        return jsonify(
-       input=userInput,
-       output="wrong input"
-   )
+   if (userInput < 0):
+       return jsonify(
+            input=userInput,
+            output="wrong input"
+       )
    while(a<userInput):
        a=a+results[-2]
        if (a<userInput):
