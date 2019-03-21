@@ -40,10 +40,11 @@ def send_to_slack(message):
 #           ethelse = userInput(userInput-1)
 #           return ethelse
 #    )
-def fibonaccifunction(int:userInput):
+@app.route('/fibonacci/<int:userInput>')
+def fibonaccifunction(userInput):
    results=[1,1]
-   a=1  
-   if (userInput < 0) 
+   a=1
+   if (userInput < 0)
         return jsonify(
        input=userInput,
        output="wrong input"
@@ -56,7 +57,7 @@ def fibonaccifunction(int:userInput):
        input=userInput,
        output=results
    )
-   
+
 
 @app.route('/is-prime/<int:userInput>')
 def is_prime(userInput):
