@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  api:
+    image: cheesepuffs476/project4
+    ports:
+      - 5000:5000
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:4.0.5-alpine
