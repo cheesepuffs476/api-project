@@ -5,10 +5,31 @@ import requests
 import json
 from flask import Flask, request
 import math
-
+from redis import Redis
 # Setup your app
 slack_token = 'https://hooks.slack.com/services/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'
 app = Flask(__name__)
+app.redis = Redis(host='redis',port=6379)
+
+@app.route('/kv-record/<id>',methods=["POST","PUT"])
+def create_post(id):
+    data = request.data.decode('utf-8')
+    checkValue = app.redis.get(id)
+    if(checkValue==None) and (request.method=="PUT"):
+        return "Cant update value. It doesn't exist",400
+    elif (not checkValue == None) and (request.method=="POST"):
+        return "Error. Can't enter that",400
+    elif (not checkValue == None) and (request.method=="PUT"):
+        app.redis.set(id,json.dumps(data))
+        return "True"
+    if checkValue == True:
+        app.redis.set(id,json.dumps(data))
+        return "True"
+    app.redis.set(id,json.dumps(data))
+    return jsonify(
+        input=id,
+        output=True
+    )
 
 # More routes go here...
 @app.route('/md5/<string:userInput>')
