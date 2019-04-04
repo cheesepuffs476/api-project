@@ -53,7 +53,7 @@ def create_post(id):
 def get_post(id):
     post = app.redis.get(id)
     if post:
-        data = json.dump(post.decode('utf-8'))
+        data = json.dump(id,post.decode('utf-8'))
     else:
         data = json.dump({})
     return data
