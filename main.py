@@ -18,31 +18,31 @@ def create_post(id):
     if(checkValue==None) and (request.method=="PUT"):
         return  jsonify(
             input=id,
-            output=false,
+            output=False,
             error="Can't update value. Value doesn't exist"
         ),400
     elif (not checkValue == None) and (request.method=="POST"):
         return  jsonify(
             input=id,
-            output=false,
+            output=False,
             error="Value already exists"
         ),400
     elif (not checkValue == None) and (request.method=="PUT"):
         app.redis.set(id,json.dumps(data))
         return jsonify(
             input=id,
-            output=true
+            output=True
         )
     if checkValue == True:
         app.redis.set(id,json.dumps(data))
         return jsonify(
             input=id,
-            output=true
+            output=True
         )
     app.redis.set(id,json.dumps(data))
     return jsonify(
         input=id,
-        output=true
+        output=True
     )
 
 # More routes go here...
@@ -56,7 +56,7 @@ def create_post(id):
         #data = json.dump(post.decode('utf-8'))
     #else:
         #data = json.dump({})
-    #return data 
+    #return data
 
 #@app.route('/kv-record/<id>' , methods=['POST'])
 #def create_post(id):
