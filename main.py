@@ -64,6 +64,17 @@ def create_post(id):
     #post = json.loads(data)
 
 
+#notes from lab 4/4 
+#"""cli.py
+    #Usage:
+        #cli.py add <x> <y>
+#"""
+#from docopt import docopt 
+
+    #def run():
+        #args = docopt(__doc__, version="0.1.0")
+        #print(args)
+        
 
 
 
