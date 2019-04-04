@@ -1,3 +1,6 @@
 FROM python:3.7
 WORKDIR /usr/src/app
-CMD ["sh", "-c", "rm -rf ./project4 && git clone https://github.com/cheesepuffs476/project4.git && cd ./project4 && pip install -r requirements.txt && python main.py"]
+RUN git clone https://github.com/cheesepuffs476/project4.git
+WORKDIR /usr/src/app/project4
+RUN pip install -r requirements.txt
+CMD ["sh", "-c", "git pull origin master && python main.py"]
