@@ -49,14 +49,14 @@ def create_post(id):
 
 
 #Im messing around with the record/retrieve -Trevor
-#@app.route('/kv-retrieve/<id>' , methods=["GET"])
-#def get_post(id):
-    #post = app.redis.get(id)
-    #if post:
-        #data = json.dump(post.decode('utf-8'))
-    #else:
-        #data = json.dump({})
-    #return data
+@app.route('/kv-retrieve/<id>' , methods=["GET"])
+def get_post(id):
+    post = app.redis.get(id)
+    if post:
+        data = json.dump(post.decode('utf-8'))
+    else:
+        data = json.dump({})
+    return data
 
 #@app.route('/kv-record/<id>' , methods=['POST'])
 #def create_post(id):
@@ -64,17 +64,17 @@ def create_post(id):
     #post = json.loads(data)
 
 
-#notes from lab 4/4 
+#notes from lab 4/4
 #"""cli.py
     #Usage:
         #cli.py add <x> <y>
 #"""
-#from docopt import docopt 
+#from docopt import docopt
 
     #def run():
         #args = docopt(__doc__, version="0.1.0")
         #print(args)
-        
+
 
 
 
