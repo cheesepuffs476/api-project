@@ -32,6 +32,29 @@ def create_post(id):
     )
 
 # More routes go here...
+
+
+#Im messing around with the record/retrieve -Trevor
+#@app.route('/kv-retrieve/<id>' , methods=["GET"])
+#def get_post(id):
+    #post = app.redis.get(id)
+    #if post:
+        #data = json.dump(post.decode('utf-8'))
+    #else:
+        #data = json.dump({})
+    #return data 
+
+#@app.route('/kv-record/<id>' , methods=['POST'])
+#def create_post(id):
+    #data = request.data.decode('utf-8')
+    #post = json.loads(data)
+
+
+
+
+
+
+
 @app.route('/md5/<string:userInput>')
 def hashfunction(userInput):
     hash_object = hashlib.md5(userInput.encode())
