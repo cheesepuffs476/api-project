@@ -16,19 +16,33 @@ def create_post(id):
     data = request.data.decode('utf-8')
     checkValue = app.redis.get(id)
     if(checkValue==None) and (request.method=="PUT"):
-        return "Cant update value. It doesn't exist",400
+        return  jsonify(
+            input=id,
+            output=false,
+            error="Can't update value. Value doesn't exist"
+        ),400
     elif (not checkValue == None) and (request.method=="POST"):
-        return "Error. Can't enter that",400
+        return  jsonify(
+            input=id,
+            output=false,
+            error="Value already exists"
+        ),400
     elif (not checkValue == None) and (request.method=="PUT"):
         app.redis.set(id,json.dumps(data))
-        return "True"
+        return jsonify(
+            input=id,
+            output=true
+        )
     if checkValue == True:
         app.redis.set(id,json.dumps(data))
-        return "True"
+        return jsonify(
+            input=id,
+            output=true
+        )
     app.redis.set(id,json.dumps(data))
     return jsonify(
         input=id,
-        output=True
+        output=true
     )
 
 # More routes go here...
@@ -70,7 +84,7 @@ def send_to_slack(message):
     requests.post(slack_token, json.dumps(payload))
     return jsonify(
         input=message,
-        output=True
+        output=true
     )
 
 #App route for Factorial
