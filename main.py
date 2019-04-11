@@ -67,7 +67,8 @@ def kv_retrieve(id):
         payload['Error'] = "ID does not exist"
         return jsonify(payload),404
     else:
-        payload['Value'] = checkValue.decode("utf-8")
+        value = checkValue.decode("utf-8").split()
+        payload['Value'] = value
 
     payload['Output'] = True
     return jsonify(payload), 200
