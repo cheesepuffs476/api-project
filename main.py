@@ -62,7 +62,7 @@ def kv_retrieve(id):
         return jsonify(payload),400
 
     #Check for Value
-    if checkValue == None;
+    if checkValue == None:
         payload['Error'] = "ID does not exist"
         return jsonify(payload),404
     else:
