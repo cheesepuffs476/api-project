@@ -28,18 +28,18 @@ def create_post(id):
             error="Value already exists"
         ),400
     elif (not checkValue == None) and (request.method=="PUT"):
-        app.redis.set(id,json.dumps(data))
+        app.redis.set(id,data)
         return jsonify(
             input=id,
             output=True
         )
     if checkValue == True:
-        app.redis.set(id,json.dumps(data))
+        app.redis.set(id,data)
         return jsonify(
             input=id,
             output=True
         )
-    app.redis.set(id,json.dumps(data))
+    app.redis.set(id,data)
     return jsonify(
         input=id,
         output=True,
@@ -66,7 +66,7 @@ def kv_retrieve(id):
         payload['Error'] = "ID does not exist"
         return jsonify(payload),404
     else:
-        payload['Value'] = checkValue.decode("utf-8").replace('\"','')
+        payload['Value'] = checkValue.decode("utf-8")
 
     payload['Output'] = True
     return jsonify(payload), 200
