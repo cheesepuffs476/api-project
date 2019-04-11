@@ -43,7 +43,6 @@ def create_post(id):
     return jsonify(
         input=id,
         output=True,
-        value=data
     )
 
 @app.route('/kv-retrieve/<id>', methods=['GET'])
