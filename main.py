@@ -56,7 +56,7 @@ def kv_retrieve(id):
 
     #Try Catch for Redis
     try:
-        checkValue = app.get(id)
+        checkValue = app.redis.get(id)
     except:
         payload['Error'] = "Cannot connect to redis"
         return jsonify(payload),400
