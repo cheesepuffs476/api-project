@@ -45,6 +45,32 @@ def create_post(id):
         output=true
     )
 
+@app.route('/kv-retrieve/<id>', methods=['GET'])
+def kv_retrieve(id):
+    #Initialize JSON
+    payload = {
+        'Input': id,
+        'Output' : False,
+        'Error' : 'N/A'
+    }
+
+    #Try Catch for Redis
+    try:
+        checkValue = app.get(id)
+    except:
+        payload['Error'] = "Cannot connect to redis"
+        return jsonify(payload),400
+
+    #Check for Value
+    if checkValue == None:
+        payload['Error'] = "ID does not exist"
+        return jsonify(payload),404
+    else:
+        payload['Value'] : checkValue.decode("utf-8")
+
+    payload['Output'] = True
+    return jsonify(payload), 200
+
 # More routes go here...
 @app.route('/md5/<string:userInput>')
 def hashfunction(userInput):
