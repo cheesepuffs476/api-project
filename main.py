@@ -45,40 +45,31 @@ def create_post(id):
         output=True
     )
 
-# More routes go here...
+@app.route('/kv-retrieve/<id>', methods=['GET'])
+def kv_retrieve(id):
+    #Initialize JSON
+    payload = {
+        'Input': id,
+        'Output' : False,
+        'Error' : 'N/A'
+    }
 
+    #Try Catch for Redis
+    try:
+        checkValue = app.get(id)
+    except:
+        payload['Error'] = "Cannot connect to redis"
+        return jsonify(payload),400
 
-#Im messing around with the record/retrieve -Trevor
-@app.route('/kv-retrieve/<id>' , methods=["GET"])
-def get_post(id):
-    post = app.redis.get(id)
-    if post:
-        data = json.dump(id,post.decode('utf-8'))
+    #Check for Value
+    if checkValue == None;
+        payload['Error'] = "ID does not exist"
+        return jsonify(payload),404
     else:
-        data = json.dump({})
-    return data
+        payload['Value'] : checkValue.decode("utf-8")
 
-#@app.route('/kv-record/<id>' , methods=['POST'])
-#def create_post(id):
-    #data = request.data.decode('utf-8')
-    #post = json.loads(data)
-
-
-#notes from lab 4/4
-#"""cli.py
-    #Usage:
-        #cli.py add <x> <y>
-#"""
-#from docopt import docopt
-
-    #def run():
-        #args = docopt(__doc__, version="0.1.0")
-        #print(args)
-
-
-
-
-
+    payload['Output'] = True
+    return jsonify(payload), 200
 
 @app.route('/md5/<string:userInput>')
 def hashfunction(userInput):
@@ -95,7 +86,7 @@ def send_to_slack(message):
     requests.post(slack_token, json.dumps(payload))
     return jsonify(
         input=message,
-        output=true
+        output=True
     )
 
 #App route for Factorial
