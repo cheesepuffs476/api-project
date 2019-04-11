@@ -42,7 +42,8 @@ def create_post(id):
     app.redis.set(id,json.dumps(data))
     return jsonify(
         input=id,
-        output=True
+        output=True,
+        value=data
     )
 
 @app.route('/kv-retrieve/<id>', methods=['GET'])
