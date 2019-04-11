@@ -68,7 +68,7 @@ def kv_retrieve(id):
         return jsonify(payload),404
     else:
         value = checkValue.decode("utf-8").split()
-        payload['Value'] = value
+        payload['Value'] = value[1]
 
     payload['Output'] = True
     return jsonify(payload), 200
