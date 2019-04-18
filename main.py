@@ -93,7 +93,7 @@ def send_to_slack(message):
     )
 
 #Endpoint returns factorial for integer that is inputted. If integer is not positive, an error message will be displayed
-@app.route('/factorial/<string:userInput')
+@app.route('/factorial/<string:userInput>')
 def factorialfunction(userInput):
     userInput=int(userInput)
     if userInput<0:
