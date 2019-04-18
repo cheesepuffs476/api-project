@@ -9,11 +9,15 @@ This is a web API built for TCMG 476. It is self contained in a docker image and
  - It will return the fibonacci sequence below a number (/fibonacci/[input])
  - It will return if a number is prime or not (/is-prime/[input])
  - It will send a message to a slack channel (/slack-alert/[input])
+ - It will create(POST)/update(PUT) a record in a redis database (/kv-record/[key])  *inside of the body is the value*
+ - It will retrieve(GET) the value from the redis database (/kv-retrieve/[key])
 
 # Instructions for Use
   - You can run the file by pulling the docker image. (The line below will run on port 80, delete the container after stopping and run in the background)
  ```sh
-$ docker run -d --rm -p 80:5000 cheesepuffs476/project4:latest
+$ git clone https://github.com/cheesepuffs476/project4.git
+$ cd ./project4
+$ docker-compose up -d
 ```
 
 # Challanges
