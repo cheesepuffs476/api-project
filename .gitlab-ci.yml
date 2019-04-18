@@ -19,9 +19,7 @@ step-deploy-prod:
   only:
     - master
   script:
-    - sudo docker image prune -f
-    - sudo docker-compose build --no-cache
+    - sudo docker kill $(sudo docker ps -q)
     - sudo docker-compose up -d
 
   environment: master
-  when: manual
