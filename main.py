@@ -100,9 +100,10 @@ def factorialfunction(userInput):
         return jsonify(
             input=userInput,
             output="Error: You did not enter a positive integer")
-    return jsonify(
-    input=userInput,
-    output=math.factorial(userInput)
+    else:
+        return jsonify(
+        input=userInput,
+        output=math.factorial(userInput)
     )
 
 #An array of integers with all Fibonacci numbers less than or equal to the input  will be outputted. If the integer is not positive, an error message will be displayed
