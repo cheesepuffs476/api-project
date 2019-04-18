@@ -7,7 +7,7 @@ from flask import Flask, request
 
 #Setup apps
 slack_token = 'https://hooks.slack.com/services/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'
-=======
+
 import math
 from redis import Redis
 slack_token = 'https://hooks.slack.com/services/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'
