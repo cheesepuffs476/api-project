@@ -74,6 +74,7 @@ def kv_retrieve(id):
     payload['Output'] = True
     return jsonify(payload), 200
 
+#Endpoint will return the MD5 hash of the string that is inputted
 @app.route('/md5/<string:userInput>')
 def hashfunction(userInput):
     hash_object = hashlib.md5(userInput.encode())
