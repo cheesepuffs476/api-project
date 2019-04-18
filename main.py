@@ -12,9 +12,10 @@ slack_token = 'https://hooks.slack.com/services/TFCTWE2SH/BH3N2QFD1/ZvLz2P5jJEq5
 app = Flask(__name__)
 app.redis = Redis(host='redis',port=6379)
 
+#Default route for troubleshooting
 @app.route('/')
 def helloworld():
-    return "Hello World"
+    return "Hello World. This is a test of the CI/CD Pipeline with GitLab"
 
 
 #Value posted to the URL will be recorded and saved in datastore attached to key supplied by URL. Only HTTP methods "POST" AND "PUT" are accepted by this URL. The output returns a boolean value that shows success. If it is false, an error message will be displayed
