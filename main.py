@@ -100,7 +100,7 @@ def factorialfunction(userInput):
         return jsonify(
             input=userInput,
             output="Error: You did not enter a positive integer")
-     else :
+     else:
         return jsonify(
         input=userInput,
         output=math.factorial(userInput)
