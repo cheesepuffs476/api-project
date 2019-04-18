@@ -4,7 +4,6 @@ import hashlib
 import requests
 import json
 from flask import Flask, request
-<<<<<<< HEAD
 
 #Setup apps
 slack_token = 'https://hooks.slack.com/services/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'
@@ -12,7 +11,7 @@ slack_token = 'https://hooks.slack.com/services/TFCTWE2SH/BH3N2QFD1/YawPIYlMAx1C
 import math
 from redis import Redis
 slack_token = 'https://hooks.slack.com/services/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'
->>>>>>> 34d979643834d5659031825010121a6d5829c7e0
+
 app = Flask(__name__)
 app.redis = Redis(host='redis',port=6379)
 
@@ -61,7 +60,6 @@ def kv_retrieve(id):
         'Error' : 'N/A'
     }
 
-<<<<<<< HEAD
 #Set up route
 @app.route('/')
 def index():
@@ -69,7 +67,7 @@ def index():
     return 'it works'
 
 #Additional routes
-=======
+
     #Try Catch for Redis
     try:
         checkValue = app.redis.get(id)
@@ -87,7 +85,6 @@ def index():
     payload['Output'] = True
     return jsonify(payload), 200
 
->>>>>>> 34d979643834d5659031825010121a6d5829c7e0
 @app.route('/md5/<string:userInput>')
 def hashfunction(userInput):
     hash_object = hashlib.md5(userInput.encode())
@@ -101,7 +98,7 @@ def hashfunction(userInput):
 def send_to_slack(message):
     payload = {'text': message}
     requests.post(slack_token, json.dumps(payload))
-<<<<<<< HEAD
+
     return 'True'
 
 #Endpoint returns factorial for integer that is inputted. If integer is not positive, an error message will be displayed
