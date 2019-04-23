@@ -12,7 +12,7 @@ test:
   only:
     - master
   script:
-    - echo run tests in this section
+    - python automatedtest.py
 
 step-deploy-prod:
   stage: deploy
