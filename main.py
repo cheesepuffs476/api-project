@@ -76,9 +76,9 @@ def kv_retrieve(id):
         payload['error'] = "ID does not exist"
         return jsonify(payload),404
     else:
-        payload['Value'] = checkValue.decode("utf-8")
+        payload['value'] = checkValue.decode("utf-8")
 
-    payload['Output'] = True
+    payload['output'] = True
     return jsonify(payload), 200
 
 #Endpoint will return the MD5 hash of the string that is inputted
