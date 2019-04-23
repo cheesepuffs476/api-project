@@ -9,6 +9,7 @@ from redis import Redis
 # Setup your app
 slack_token = 'https://hooks.slack.com/services/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'
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 app.redis = Redis(host='redis',port=6379)
 
 @app.route('/kv-record/<id>',methods=["POST","PUT"])
@@ -49,26 +50,26 @@ def create_post(id):
 def kv_retrieve(id):
     #Initialize JSON
     payload = {
-        'Input': id,
-        'Output' : False,
-        'Error' : 'N/A'
+        'input': id,
+        'output' : False,
+        'error' : 'N/A'
     }
 
     #Try Catch for Redis
     try:
         checkValue = app.redis.get(id)
     except:
-        payload['Error'] = "Cannot connect to redis"
+        payload['error'] = "Cannot connect to redis"
         return jsonify(payload),400
 
     #Check for Value
     if checkValue == None:
-        payload['Error'] = "ID does not exist"
+        payload['error'] = "ID does not exist"
         return jsonify(payload),404
     else:
-        payload['Value'] = checkValue.decode("utf-8")
+        payload['value'] = checkValue.decode("utf-8")
 
-    payload['Output'] = True
+    payload['output'] = True
     return jsonify(payload), 200
 
 @app.route('/md5/<string:userInput>')
