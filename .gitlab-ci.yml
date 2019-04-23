@@ -14,7 +14,7 @@ test:
   script:
     - sudo docker-compose down
     - sudo docker-compose up -d
-    - sleep 30
+    - sleep 7
     - python3 automatedtest.py
 
 step-deploy-prod:
