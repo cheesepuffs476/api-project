@@ -6,7 +6,7 @@ usage = """Usage:
         test.py factorial <input>
         test.py fibonacci <input>
         test.py is-prime <input>
-        test.py kv-retrieve <input> 
+        test.py kv-retrieve <input>
         test.py kv-record <input> <value>
         test.py slack-alert <input>
 """
@@ -31,15 +31,24 @@ if args['fibonacci']==True:
 if args['is-prime']==True:
     r = requests.get("http://api.blackard.org:5000/is-prime/"+ args["<input>"])
     data = r.json()
-    print(data['output'])  
+    print(data['output'])
 if args['kv-retrieve']==True:
     r = requests.get("http://api.blackard.org:5000/kv-retrieve/"+ args["<input>"])
     data = r.json()
-    print(data['output']) 
+    print(data['output'])
 if args['kv-record']==True:
-    r = requests.get("http://api.blackard.org:5000/kv-record/"+ args["<input>"])
+    r = requests.get("http://api.blackard.org:5000/kv-retrieve/"+ args["<input>"])
     data = r.json()
-    print(data['output']) 
+    print(data)
+    if(data['error'])=="ID does not exist":
+        r = requests.post(("http://api.blackard.org:5000/kv-record/"+ args["<input>"]),data=args["<value>"])
+        data = r.json()
+        print(data['output'])
+    if(data['error'])=="N/A":
+        r = requests.put(("http://api.blackard.org:5000/kv-record/"+ args["<input>"]),data=args["<value>"])
+        data = r.json()
+        print(data['output'])
+
 if args['slack-alert']==True:
     r = requests.get("http://api.blackard.org:5000/slack-alert/"+ args["<input>"])
     data = r.json()

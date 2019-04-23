@@ -59,21 +59,21 @@ def create_post(id):
 def kv_retrieve(id):
     #Initialize JSON
     payload = {
-        'Input': id,
-        'Output' : False,
-        'Error' : 'N/A'
+        'input': id,
+        'output' : False,
+        'error' : 'N/A'
     }
 
     #Try Catch for Redis
     try:
         checkValue = app.redis.get(id)
     except:
-        payload['Error'] = "Cannot connect to redis"
+        payload['error'] = "Cannot connect to redis"
         return jsonify(payload),400
 
     #Check for Value
     if checkValue == None:
-        payload['Error'] = "ID does not exist"
+        payload['error'] = "ID does not exist"
         return jsonify(payload),404
     else:
         payload['Value'] = checkValue.decode("utf-8")
