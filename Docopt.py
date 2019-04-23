@@ -35,16 +35,15 @@ if args['is-prime']==True:
 if args['kv-retrieve']==True:
     r = requests.get("http://api.blackard.org:5000/kv-retrieve/"+ args["<input>"])
     data = r.json()
-    print(data['output'])
+    print(data['value'])
 if args['kv-record']==True:
     r = requests.get("http://api.blackard.org:5000/kv-retrieve/"+ args["<input>"])
     data = r.json()
-    print(data)
-    if(data['error'])=="ID does not exist":
+    if(data['error']=="ID does not exist"):
         r = requests.post(("http://api.blackard.org:5000/kv-record/"+ args["<input>"]),data=args["<value>"])
         data = r.json()
         print(data['output'])
-    if(data['error'])=="N/A":
+    if(data['error']=="N/A"):
         r = requests.put(("http://api.blackard.org:5000/kv-record/"+ args["<input>"]),data=args["<value>"])
         data = r.json()
         print(data['output'])
