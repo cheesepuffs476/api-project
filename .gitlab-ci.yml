@@ -12,6 +12,8 @@ test:
   only:
     - master
   script:
+    - docker-compose down
+    - docker-compose up -d
     - python automatedtest.py
 
 step-deploy-prod:
