@@ -10,6 +10,7 @@ from redis import Redis
 #Setup apps
 slack_token = 'https://hooks.slack.com/services/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'
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 app.redis = Redis(host='redis',port=6379)
 
 #Default route for troubleshooting
