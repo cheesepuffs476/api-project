@@ -33,6 +33,9 @@ Continuous Delivery
 
 ### Instructions for Remote Use
  - The project is hosted on a server located at api.blackard.org:5000. All the routes can be used the same as the the local version
+ 
+### CLI Use
+ - Use quotations when entering a route and input.
 
 ### Challanges
 - Creating a ready to distrubute program via the docker image
