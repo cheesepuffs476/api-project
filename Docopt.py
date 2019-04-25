@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# Use quotations around inputs
 usage = """Usage:
         test.py -h
         test.py md5 <input>
