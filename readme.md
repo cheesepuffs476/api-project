@@ -36,6 +36,11 @@ Continuous Delivery
  
 ### CLI Use
  - Use quotations when entering a route and input.
+ - Requirements are requests and docopt
+    ```sh
+    $ pip install requests Docopt
+    $ python3 Docopt.py [method] [input] (Value)
+    ```
 
 ### Challanges
 - Creating a ready to distrubute program via the docker image
