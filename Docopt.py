@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*-
 # Use quotations around inputs
 usage = """Usage:
-        test.py -h
-        test.py md5 <input>
-        test.py factorial <input>
-        test.py fibonacci <input>
-        test.py is-prime <input>
-        test.py kv-retrieve <input>
-        test.py kv-record <input> <value>
-        test.py slack-alert <input>
+        Docopt.py -h
+        Docopt.py md5 <input>
+        Docopt.py factorial <input>
+        Docopt.py fibonacci <input>
+        Docopt.py is-prime <input>
+        Docopt.py kv-retrieve <input>
+        Docopt.py kv-record <input> <value>
+        Docopt.py slack-alert <input>
+        Use quotations with arguments
 """
 
 from docopt import docopt
