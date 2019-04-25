@@ -10,7 +10,6 @@ usage = """Usage:
         Docopt.py kv-retrieve <input>
         Docopt.py kv-record <input> <value>
         Docopt.py slack-alert <input>
-        Use quotations with arguments
 """
 
 from docopt import docopt
