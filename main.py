@@ -8,7 +8,7 @@ import math
 from redis import Redis
 
 #Setup apps
-slack_token = 'https://hooks.slack.com/services/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'
+slack_token = 'https://hooks.slack.com/services/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'
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 app.redis = Redis(host='redis',port=6379)
