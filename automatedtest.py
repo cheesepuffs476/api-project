@@ -24,7 +24,7 @@ for item in testput:
     exitcode = 1
 
 #test all routes using GET method     [route,output]
-testget = [  ['/md5/test','098f6bcd4621d373cade4e832627b4f6']  , ['/fibonacci/15',[1, 1, 2, 3, 5, 8, 13]] , ['/is-prime/15',False],['/is-prime/13',True]   ]
+testget = [  ['/md5/test','098f6bcd4621d373cade4e832627b4f']  , ['/fibonacci/15',[1, 1, 2, 3, 5, 8, 13]] , ['/is-prime/15',False],['/is-prime/13',True]   ]
 for item in testget:
   url = URL + item[0]
   r = requests.get(url)
